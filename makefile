@@ -1,19 +1,15 @@
 report: report.tex allocation.pdf
-	latexmk  -pdf
+	latexmk  -pdf report.tex
 
 allocation.pdf: data/schools.csv data/students.csv py-school-match.py
 	python3 py-school-match.py
 
-data/schools.csv: mkdir.data
+data/schools.csv: 
 	cd data && wget https://raw.githubusercontent.com/srivankit/py-school-match-data/master/schools.csv
 
 data/students.csv:
 	cd data && wget https://raw.githubusercontent.com/srivankit/py-school-match-data/master/students.csv
 
-mkdir.data:
-	if [! -d "/data" ]
-	then
-		mkdir data
 
 .PHONY: clean almost_clean
 
