@@ -4,12 +4,13 @@ report: report.tex allocation.pdf
 allocation.pdf: data/schools.csv data/students.csv py-school-match.py
 	python3 py-school-match.py
 
-data/schools.csv: 
+data/schools.csv: mkdir.data 
 	cd data && wget https://raw.githubusercontent.com/srivankit/py-school-match-data/master/schools.csv
 
-data/students.csv:
+data/students.csv: mkdir.data
 	cd data && wget https://raw.githubusercontent.com/srivankit/py-school-match-data/master/students.csv
-
+mkdir.data:
+	if [ ! -d "data" ]; then mkdir data ; fi
 
 .PHONY: clean almost_clean
 
