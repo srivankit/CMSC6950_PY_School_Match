@@ -139,10 +139,10 @@ unassigned_per=[CA_unassgn_per, INT_unassgn_per]
 
 # Creating pie chart for the allocation percentage in two categories
 import matplotlib.pyplot as plt
-fig, det = plt.subplots(1,2)
+fig, det = plt.subplots(2,1)
 fig.set_figheight(7)
 fig.set_figwidth(10)
-font = {'family' : 'Lucida Grande',
+font = {
         'weight' : 'bold',
         'size'   : 12}
 
