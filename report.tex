@@ -1,46 +1,103 @@
-\documentclass[12pt, letterpaper]{article}
-
+\documentclass[twocolumn]{article}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{url}
 
+\setcounter{page}{1} % start with first page
 
+\title{Py\-School\-Match Project Report}
+\author{
+Ankit Srivastav\textsuperscript{1\*}\thanks{\textbf{1} Faculty of Business Administration, Memorial University of Newfoundland, St. John's, NL, CA Email: ankits@mun.ca};\,\thanks
 
-\title{\textbf{Py-School Match}}
-
-\author{\textbf{Ankit Srivastav} \thanks{funded by the Overleaf team}}
-
-\date{February 2017}
-
-
-
-
-
-
+}
+\date{August 2020}
 
 \begin{document}
+% fill in short title
+\newcommand{\jref}{CMSC6950\_Final\_Project}
+\newcommand{\jhead}{CMSC6950\_Final\_Project}
+\newcommand{\jdate}{July 2020}
 
+% \begin{htmlonly}
+% \href{\jref}{\jhead} \jdate \
+% \end{htmlonly}
+
+\twocolumn[
+\vspace{-.3in}
+% {\small \href{\jref}{\jhead} \jdate}
 \maketitle
+\vspace{-3mm}
+\begin{abstract}
+The school choice problem is formulated as a one\-sided or a two\-sided matching problem. Py\-school\-match aims to solve the problem of matching students with schools according to a pre\-defined set of criteria. It is an open\-source Python package that implements multiple matching algorithms in order to assign students to schools.  It is specifically designed to allocate students to schools by evaluating different settings and algorithms, without the need to adapt or develop a complete solution.
 
+\smallskip
+\noindent
+\end{abstract}\bigskip]
+% {\renewcommand{\thefootnote}{}
+% \footnotetext{ 
+% }}
+% \saythanks
 
+% \setlength{\baselineskip}{12pt plus.2pt}
 
-Matching Students to appropriate school is important for bot schools and students. figure \ref{fig:mesh1} displays an e\
-example on page \pageref{fig:mesh1}
+\section{Introduction}
+Matching students with schools plays an integral part in shaping future of the young minds all around the world. In many countries where schools cannot discriminate among student applicants (no entrance exams, no interviews, no previous grades examination, etc.), there is always one
+question that cannot be answered directly: How to assign students fairly and efficiently?
+\\
+\\
+Over the years, there have been many proposed solutions to this problem. These vary from simple “lotteries” (random priority assignment) to more complex graph algorithms. Because each option has its own strengths and weaknesses, and given that in the real world there is an extra layer of requirements (quotas, special conditions, ranks of preference, etc.) it is vital to analyze and simulate every available option. The correct selection of the algorithm can have serious effects on efficiency and fairness, as it has been exemplified by studies conducted in school systems from Boston (P. Abdulkadiroğlu Atila \& Roth, 2005a) and New York (P. Abdulkadiroğlu Atila \& Roth, 2005b, 2009)).
 
+\section{Method} % example of a heading
 
+Py-school-match ~\cite{article} is a Python library that implements multiple matching algorithms and aims to ease the process of choosing the best alternative for each school system. It allows researchers to simply specify the country’s requirements or conditions, and then run interchangeably the different algorithms to compare their results. What makes py-school-match different from other libraries is that it is specifically created to be used in the student-to-school assignment problem. Another distinctive characteristic is that it allows the use of quotas, priorities, capacities, among others, without much effort.\\
+py-school-match provides multiple algorithms ready to use:\\
 
-\begin{figure}[h]
+\begin{itemize}
+ \vspace{-0.4cm}\item Top Trading Cycles (TTC) \\
+ \vspace{-0.4cm}\item Deferred acceptance with multiple tie-breaking (DAMTB)\\
+ \vspace{-0.4cm}\item Deferred acceptance with single tie-breaking (DASTB)\\
+ \vspace{-0.4cm}\item Stable improvement cycles (SIC)\\
+ \vspace{-0.4cm}\item Deferred Acceptance with multiple tie-breaking, plus stable cycles (MSIC)\\
+ \vspace{-0.4cm}\item Deferred Acceptance with single tie-breaking, plus non-stable cycles (NSIC)
+\end{itemize}
 
-    \centering
+\subsection{Procedure}
 
-    \includegraphics[width=1\textwidth]{allocation.png}
+We have worked on the Stable improvement cycles (SIC) algorithm for assigning seats to a list of students based on their school preference and their nationality acceptance quota in those schools. The procedure has been explained as follows:\\
+\begin{enumerate}
+    \vspace{-0.4cm}\item The package will read the data file of name of students with their preferences for schools and their nationality status. It will also read the data file of school names and the seats available in each school.\\
+    \vspace{-0.4cm}\item It will use the SIC algorithm and assign schools to the students based on their preference of schools and the characteristics(nationality status).\\
+    \vspace{-0.4cm}\item The users can change the quota percentage as per their school guidelines for assigning students to the schools. According to the percentage of quota set by the user, the ratio of students assigned to school and not assigned to schools will fluctuate.\\
+\end{enumerate}
 
-    \caption{Ready set school}
+\section{Results}
 
-    \label{fig:mesh1}
+In this section, a list of outputs generated by using the py-school-match package are mentioned.\\
 
+\begin{itemize}
+    \vspace{-0.4cm}\item The py-school-match package will generate a .csv file showing list of students who got the schools assigned based on the quota of nationality characteristic.\\
+    \vspace{-0.4cm}\item It will also include the list of students who did not get assigned to any school by using the package.\\
+    \vspace{-0.4cm}\item The output will also include representation of number of students who were assigned and not assigned to schools with the breakdown of their nationality.\\
+    \vspace{-0.4cm}\item Another representation will show the total number of students based on the difference of nationality.\\
+\end{itemize}
+
+% \section*{References}
+\begin{thebibliography}{1}
+
+\bibitem{article}
+Garizio, Iacopo, 
+  {Py-school-match: Matching algorithms to assign students to schools. Journal of Open Source Software.} Opt. Express {4(34)},
+  1111, \url{https://doi.org/10.21105/joss.01111} (2019).
+\end{thebibliography}
+\onecolumn
+\section*{Figures}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=500px ,height=500px,keepaspectratio]{allocation}
+    \caption{Percentage distribution of assigned and unassigned students as per their origination}
+    \label{fig:Assigned}
 \end{figure}
-
-
-
 
 
 \end{document}
