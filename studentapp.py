@@ -19,7 +19,7 @@ for row in std['Characteristics']:
 fig, det = plt.subplots()
 fig.set_figheight(7)
 fig.set_figwidth(10)
-font = {'family' : 'Lucida Grande',
+font = {
         'weight' : 'bold',
         'size'   : 25}
 
