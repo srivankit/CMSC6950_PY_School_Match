@@ -1,21 +1,28 @@
 Installation
 Dependencies
 graph-tool (>= 2.27)
-To create virtual environment
+sudo apt install latexmk
+sudo apt install texlive-full
+
+To create virtual environment:
+
 conda create --name gt -c conda-forge graph-tool
 
 conda activate gt - to switch to the environment
 
 conda deactivate - to switch to base environment
 
-Now install graph tool after switching to the gt environment using below command
+Now install graph tool after switching to the gt environment using below command:
 
 conda install -c conda-forge graph-tool
 
-install py-school-match using below command to run the package
-pip install py-school-match
+1. install py-school-match using below command to run the package
 
-type make to start execution
+	pip install py-school-match
 
-Move to data folder in the computer and look for assigned.csv file
-assigned.csv file will contain the list of students and corresponding allocated schools.
+2. clone git repository: git@github.com:srivankit/CMSC6950_PY_School_Match.git
+	cd CMSC6950_py_school_match_project
+	type make to start execution and generate the output files
+
+3. Move to data folder in the computer and look for output.csv file
+	assigned.csv file will contain the list of students and corresponding allocated schools along with students who are not assigned to a school.
