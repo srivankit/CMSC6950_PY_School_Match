@@ -142,6 +142,11 @@ import matplotlib.pyplot as plt
 fig, det = plt.subplots(1,2)
 fig.set_figheight(7)
 fig.set_figwidth(10)
+font = {'family' : 'Lucida Grande',
+        'weight' : 'bold',
+        'size'   : 12}
+
+plt.rc('font', **font)
 labels = ['Canadian', 'International']
 det[0].pie(assigned_per, labels=labels, autopct='%1.2f%%', shadow=True)
 det[0].set_title('Assigned Students Percentage Distribution')
