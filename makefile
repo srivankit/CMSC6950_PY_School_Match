@@ -17,6 +17,9 @@ mkdir.data:
 clean: almost_clean
 	rm report.pdf
 	rm plot.pdf
+	rm Assigned.csv
+	rm schools.csv
+	rm students.csv
 
 almost_clean:
 	latexmk -c

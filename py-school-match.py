@@ -64,9 +64,20 @@ ruleset = psm.RuleSet()
 #assigning students with the ids in the dataframe
 std_id = []
 for r in students:
+
     st = r.id
     std_id.append(st)
 std['std_id'] = std_id
+
+#assigning schools with the ids in the dataframe
+sch_id = []
+for r in schools:
+    sc = r.id
+    sch_id.append(sc)
+sch['sch_id'] = sch_id
+#creating dictionary of names and schools
+std_name = dict(zip(std['std_id'], std['Student_Name']))
+sch_name = dict(zip(sch['sch_id'], sch['Name']))
 
 # Defining a new rule from the criteria above.
 # This time, a flexible quota is imposed.
@@ -138,3 +149,39 @@ det[1].pie(unassigned_per, labels=labels, autopct='%1.2f%%', shadow=True)
 det[1].set_title('Unassigned Students Percentage Distribution')
 # plt.show()
 fig.savefig('allocation.png')
+#creating output file with allocated students
+assigned_std_name = []
+assigned_sch_name = []
+unassigned_std_name = []
+unassigned_sch_name = []
+final_unassigned = []
+for student in students:
+    if student.assigned_school:
+        st = std_name[student.id]
+        sc = sch_name[student.assigned_school.id]
+        assigned_std_name.append(st)
+        assigned_sch_name.append(sc) 
+#         print(f'{std_name[student.id]} assigned to {sch_name[student.assigned_school.id]}')
+    else:
+#         print(f'{std_name[student.id]} not assigned')
+        st = std_name[student.id]
+        unassigned_std_name.append(st)
+        unassigned_sch_name.append('None')
+        
+assign_dict = {
+            'Name': assigned_std_name,
+            'Assigned School': assigned_sch_name
+                       
+          }
+for row_std in unassigned_std_name:
+    assign_dict['Name'].append(row_std)
+    
+for row_sch in unassigned_sch_name:
+    assign_dict['Assigned School'].append(row_sch)
+    
+
+# assign_dict['Name'].append(unassigned_std_name)
+# assign_dict['School'].append(unassigned_sch_name)
+
+df = pd.DataFrame(assign_dict)
+df.to_csv(r'data/Assigned.csv', index = False)
