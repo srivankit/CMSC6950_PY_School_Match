@@ -1,18 +1,22 @@
+# Importing py-school-match and other libraries
+import py_school_match as psm
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#Defining a function to calculate percentahe
 def percentage (val1, val2):
     total = val1 + val2
     percent_val1 = ((val1)/total)*100
     return  percent_val1
 
-# Importing py-school-match
-import py_school_match as psm
-import pandas as pd
-# school_file = pd.read_csv('schools.csv')
-# student_file = pd.read_csv('students.csv')
-# quota_file = 'country_quotas.csv'
 
+
+# Start of py-school-match package execution
+
+#Reading files from the folder
 sch = pd.read_csv('data/schools.csv')
 std = pd.read_csv('data/students.csv')
-# qta = pd.read_csv(quota_file)
+
 
 student = []
 schools = {}
@@ -86,7 +90,7 @@ sch_name = dict(zip(sch['sch_id'], sch['Name']))
 # no vulnerable students left, even if the quota is not met, the
 # school can now accept non-vulnerable students.
 # rule_NL = psm.Rule(special_NL, quota=0.2)
-rule_CA = psm.Rule(special_CA, quota=0.3)
+rule_CA = psm.Rule(special_CA, quota=0.)
 # rule_INT = psm.Rule(special_INT, quota=0.9)
 
 # Adding the rule to the ruleset. This means that a 'vulnerable' student has a higher priority.
@@ -138,7 +142,7 @@ assigned_per=[CA_assgn_per, INT_assgn_per]
 unassigned_per=[CA_unassgn_per, INT_unassgn_per]
 
 # Creating pie chart for the allocation percentage in two categories
-import matplotlib.pyplot as plt
+
 fig, det = plt.subplots(2,1)
 fig.set_figheight(7)
 fig.set_figwidth(10)
