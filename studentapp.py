@@ -6,6 +6,7 @@ import numpy as np
 # quota_file = 'country_quotas.csv'
 count_ca = 0
 count_in = 0
+#reading CSV files
 sch = pd.read_csv('data/schools.csv')
 std = pd.read_csv('data/students.csv')
 for row in std['Characteristics']:
@@ -16,6 +17,9 @@ for row in std['Characteristics']:
 
                     # print(count_ca)
                     # print(count_in)
+
+
+#Defining plot details                    
 fig, det = plt.subplots()
 fig.set_figheight(7)
 fig.set_figwidth(10)
