@@ -90,7 +90,7 @@ sch_name = dict(zip(sch['sch_id'], sch['Name']))
 # no vulnerable students left, even if the quota is not met, the
 # school can now accept non-vulnerable students.
 # rule_NL = psm.Rule(special_NL, quota=0.2)
-rule_CA = psm.Rule(special_CA, quota=0.)
+rule_CA = psm.Rule(special_CA, quota=0.4)
 # rule_INT = psm.Rule(special_INT, quota=0.9)
 
 # Adding the rule to the ruleset. This means that a 'vulnerable' student has a higher priority.
@@ -155,7 +155,7 @@ labels = ['Canadian', 'International']
 det[0].pie(assigned_per, labels=labels, autopct='%1.2f%%', shadow=True)
 det[0].set_title('Assigned Students Percentage Distribution')
 det[1].pie(unassigned_per, labels=labels, autopct='%1.2f%%', shadow=True)
-det[1].set_title('Unassigned Students Percentage Distribution')
+det[1].set_title('Unassigned Students Percentage Distribution', y= -0.1)
 # plt.show()
 fig.savefig('allocation.png')
 #creating output file with allocated students
