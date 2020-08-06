@@ -14,7 +14,9 @@ data/students.csv: mkdir.data
 mkdir.data:
 	if [ ! -d "data" ]; then mkdir data ; fi
 
-.PHONY: clean
+.PHONY: clean almost_clean
 
 clean:
+	latexmk -C
+almost_clean:
 	latexmk -c
