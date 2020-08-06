@@ -18,5 +18,7 @@ mkdir.data:
 
 clean:
 	latexmk -C
+	rm *.png
 almost_clean:
 	latexmk -c
+	rm *.png
